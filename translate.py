@@ -1,6 +1,6 @@
-from google_trans_new import google_translator
+from googletrans import Translator
 
-translator = google_translator()
+translator = Translator()
 _from = "DE"
 _to = "EN"
 
@@ -133,12 +133,12 @@ while True:
         _tmp = _to
         _to = _from
         _from = _tmp
-    elif txt == "from":
+    elif txt == "\\from":
         lang = from_wizard()
         _from = lang
-    elif txt == "to":
+    elif txt == "\\to":
         lang = to_wizard()
         _to = lang
     else:
-        translated = translator.translate(txt, lang_src=_from, lang_tgt=_to)
-        print(translated)
+        translated = translator.translate(txt, dest=_to, src=_from)
+        print(translated.text)
